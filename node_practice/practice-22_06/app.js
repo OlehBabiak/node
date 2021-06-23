@@ -21,18 +21,22 @@ const filePathByWomanOlder20 = path.join(__dirname, 'womanOlder20')
 const filePathByWomanYounger20 = path.join(__dirname, 'womanYounger20')
 console.log(filePathByManOlder20)
 
-fs.mkdir(filePathByManOlder20, {recursive: true}, (err)=>{})
+fs.mkdir(filePathByManOlder20, {recursive: true}, (err)=>{
+    fs.mkdir(filePathByManYounger20,{recursive: true}, (err)=>{
+        fs.mkdir(filePathByWomanOlder20, {recursive: true}, (err)=>{
+            fs.mkdir(filePathByWomanYounger20, {recursive: true}, (err)=>{
+                createFiles()
+            })
+        })
+    })
+})
 
-fs.mkdir(filePathByManYounger20,{recursive: true}, (err)=>{})
-
-fs.mkdir(filePathByWomanOlder20, {recursive: true}, (err)=>{})
-
-fs.mkdir(filePathByWomanYounger20, {recursive: true}, (err)=>{})
 
 function createFiles() {
     for (const user of users) {
         if (user.age <=20 && user.gender === "female"){
-            fs.appendFile(`${filePathByWomanYounger20}/${user.name}.txt`, JSON.stringify(user), (err)=>{
+            let pathWomenYonger20 = path.join(filePathByWomanYounger20, '${user.name}.txt')
+            fs.appendFile(pathWomenYonger20, JSON.stringify(user), (err)=>{
                 if (err){
                     console.log('====================')
                     console.log(err)
@@ -41,7 +45,8 @@ function createFiles() {
             })
         }else
         if (user.age >20 && user.gender === "female"){
-            fs.appendFile(`${filePathByWomanOlder20}/${user.name}.txt`, JSON.stringify(user), (err)=>{
+            let pathWomenOlder20 = path.join(filePathByWomanOlder20, '${user.name}.txt')
+            fs.appendFile(pathWomenOlder20, JSON.stringify(user), (err)=>{
                 if (err){
                     console.log('====================')
                     console.log(err)
@@ -50,7 +55,8 @@ function createFiles() {
             })
         }else
         if (user.age <=20 && user.gender === "male"){
-            fs.appendFile(`${filePathByManYounger20}/${user.name}.txt`, JSON.stringify(user), (err)=>{
+            let pathMenYonger20 = path.join(filePathByManYounger20, '${user.name}.txt')
+            fs.appendFile(pathMenYonger20, JSON.stringify(user), (err)=>{
                 if (err){
                     console.log('====================')
                     console.log(err)
@@ -58,7 +64,8 @@ function createFiles() {
                 }
             })
         }else {
-            fs.appendFile(`${filePathByManOlder20}/${user.name}.txt`, JSON.stringify(user), (err)=>{
+            let pathMenOlder20 = path.join(filePathByManOlder20, '${user.name}.txt')
+            fs.appendFile(pathMenOlder20, JSON.stringify(user), (err)=>{
                 if (err){
                     console.log('====================')
                     console.log(err)
@@ -69,7 +76,7 @@ function createFiles() {
     }
 }
 
-createFiles()
+
 
 
 

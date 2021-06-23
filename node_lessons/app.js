@@ -14,12 +14,8 @@
 // const fs = require('fs'); //всі require створювати по алфавіту
 
 // const filePath = __dirname + '/dir/dog.txt';
-// const filePathToRemove = __dirname + '/dir/ewq.php';
 
-// const filePath = __dirname + '/dir/file.js';
-// const filePath2 = __dirname + '/dir/fileCopy.js';
-//
-// const filePathNew = __dirname + '/movie/hello.world';
+
 //
 //
 //
@@ -92,8 +88,8 @@
 //         return
 //     }
 // })
-
-// fs.unlink(filePathToRemove, err => {
+// const filePathToRemove = __dirname + '/dir/ewq.php';
+// fs.unlink(filePathToRemove, err => {                            //delete files
 //         if (err){
 //         console.log('====================')
 //         console.log(err)
@@ -101,6 +97,11 @@
 //         return
 //     }
 // })
+// const filePath = __dirname + '/dir/file.js';
+
+// const filePath2 = __dirname + '/dir/fileCopy.js';
+//
+// const filePathNew = __dirname + '/movie/hello.world';
 
 // fs.rename(filePath, filePath2, err => { //перейменовуємо файл в межах однієї директорії
 //             if (err){
